@@ -25,8 +25,6 @@ struct Vector3D
 
 GAMEMATH_API_EXPORT void GMInit(bool leftHanded);
 
-GAMEMATH_API_EXPORT int GetNumber();
-
 // Sum the contents of an array.
 template<typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
 T SumArrayContentsBase(T values[], int length);

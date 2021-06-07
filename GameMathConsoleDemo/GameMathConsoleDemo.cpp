@@ -26,5 +26,18 @@ int main()
     float floatsum = SumArrayContents(floats, 3);
     std::cout << "Float Sum: " << floatsum << std::endl;
 
+    Vector2D* vector2 = new Vector2D();
+    vector2->x = 4;
+    vector2->y = 0;
+    double mag2 = CalculateMagnitude(vector2);
+    std::cout << "Magnitude for Vector 2D: " << mag2 << std::endl;
+
+    Vector3D* vector3 = new Vector3D();
+    vector3->x = 4;
+    vector3->y = 0;
+    vector3->z = 0;
+    double mag3 = CalculateMagnitude(vector3);
+    std::cout << "Magnitude for Vector 3D: " << mag3 << std::endl;
+
     return 0;
 }

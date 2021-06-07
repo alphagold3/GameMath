@@ -8,11 +8,6 @@ void GMInit(bool leftHanded)
 	IsLeftHanded = leftHanded;
 }
 
-int GetNumber()
-{
-	return 5;
-}
-
 // Sum the contents of an array.
 template<typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
 T SumArrayContentsBase(T values[], int length)
@@ -175,21 +170,21 @@ void AddVectorToVector(Vector3D* vector1, Vector3D* vector2) { vector1->x += vec
 
 // Subtract two same size arrays using linear algebra rules for vector subtraction
 template<typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
-void SubtractVectorToVectorBase(T values1[], T values2[], int length)
+void SubtractArrayToArrayBase(T values1[], T values2[], int length)
 {
 	for (int i = 0; i < length; i++)
 	{
 		values1[i] -= values2[i];
 	}
 }
-void SubtractVectorToVector(short values1[], short values2[], int length) { SubtractVectorToVectorBase(values1, values2, length); }
-void SubtractVectorToVector(unsigned short values1[], unsigned short values2[], int length) { SubtractVectorToVectorBase(values1, values2, length); }
-void SubtractVectorToVector(int values1[], int values2[], int length) { SubtractVectorToVectorBase(values1, values2, length); }
-void SubtractVectorToVector(unsigned int values1[], unsigned int values2[], int length) {  SubtractVectorToVectorBase(values1, values2, length); }
-void SubtractVectorToVector(long values1[], long values2[], int length) { SubtractVectorToVectorBase(values1, values2, length); }
-void SubtractVectorToVector(unsigned long values1[], unsigned long values2[], int length) { SubtractVectorToVectorBase(values1, values2, length); }
-void SubtractVectorToVector(float values1[], float values2[], int length) { SubtractVectorToVectorBase(values1, values2, length); }
-void SubtractVectorToVector(double values1[], double values2[], int length) { SubtractVectorToVectorBase(values1, values2, length); }
+void SubtractArrayToArray(short values1[], short values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
+void SubtractArrayToArray(unsigned short values1[], unsigned short values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
+void SubtractArrayToArray(int values1[], int values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
+void SubtractArrayToArray(unsigned int values1[], unsigned int values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
+void SubtractArrayToArray(long values1[], long values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
+void SubtractArrayToArray(unsigned long values1[], unsigned long values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
+void SubtractArrayToArray(float values1[], float values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
+void SubtractArrayToArray(double values1[], double values2[], int length) { SubtractArrayToArrayBase(values1, values2, length); }
 
 
 // Subtract 2 vectors from each other.
