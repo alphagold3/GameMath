@@ -141,11 +141,74 @@ GAMEMATH_API_EXPORT void SubtractArrayToArray(double values1[], double values2[]
 GAMEMATH_API_EXPORT void SubtractVectorToVector(Vector2D* vector1, Vector2D* vector2);
 GAMEMATH_API_EXPORT void SubtractVectorToVector(Vector3D* vector1, Vector3D* vector2);
 
+
+// Calculate the magnitude of an array vector
+template<typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+double CalculateArrayMagnitudeBase(T values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(short values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(unsigned short values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(int values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(unsigned int values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(long values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(unsigned long values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(float values[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayMagnitude(double values[], int length);
+
 // Calculate the magnitude of a vector
 GAMEMATH_API_EXPORT double CalculateMagnitude(Vector2D* vector);
 GAMEMATH_API_EXPORT double CalculateMagnitude(Vector3D* vector);
 
+// Normalize an array vector
+template<typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+void NormalizeArrayVectorBase(T values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(short values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(unsigned short values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(int values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(unsigned int values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(long values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(unsigned long values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(float values[], int length);
+GAMEMATH_API_EXPORT void NormalizeArrayVector(double values[], int length);
 
+// Normalize a vector
+GAMEMATH_API_EXPORT Vector2D NormalizeVector(Vector2D vector);
+GAMEMATH_API_EXPORT Vector3D NormalizeVector(Vector3D vector);
+GAMEMATH_API_EXPORT void NormalizeVector(Vector2D* vector);
+GAMEMATH_API_EXPORT void NormalizeVector(Vector3D* vector);
+
+// Calculate the distance between 2 same size array vectors
+template<typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+double CalculateArrayDistanceBase(T values1[], T values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(short values1[], short values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(unsigned short values1[], unsigned short values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(int values1[], int values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(unsigned int values1[], unsigned int values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(long values1[], long values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(unsigned long values1[], unsigned long values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(float values1[], float values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDistance(double values1[], double values2[], int length);
+
+// Calculates distance between 2 vectors
+GAMEMATH_API_EXPORT double CalculateDistance(Vector2D* vector1, Vector2D* vector2);
+GAMEMATH_API_EXPORT double CalculateDistance(Vector3D* vector1, Vector3D* vector2);
+
+// Calculates the dot product.
+// Dot product is one method of multiplying 2 vectors that results in a single value, a scalar.
+template<typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+double CalculateArrayDotProducteBase(T values1[], T values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(short values1[], short values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(unsigned short values1[], unsigned short values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(int values1[], int values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(unsigned int values1[], unsigned int values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(long values1[], long values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(unsigned long values1[], unsigned long values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(float values1[], float values2[], int length);
+GAMEMATH_API_EXPORT double CalculateArrayDotProduct(double values1[], double values2[], int length);
+
+// Calculates the dot product.
+// Dot product is one method of multiplying 2 vectors that results in a single value, a scalar.
+GAMEMATH_API_EXPORT double CalculateDotProduct(Vector2D* vector1, Vector2D* vector2);
+GAMEMATH_API_EXPORT double CalculateDotProduct(Vector3D* vector1, Vector3D* vector2);
 
 // Convert a radians value to degrees
 GAMEMATH_API_EXPORT double ConvertToDegrees(double radians);

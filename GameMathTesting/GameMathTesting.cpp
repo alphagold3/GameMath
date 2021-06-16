@@ -486,20 +486,129 @@ namespace GameMathTesting
 			Assert::IsTrue((double)0 == v3D->z);
 		}
 
-		TEST_METHOD(TestMisc)
+		TEST_METHOD(TestCalculateMagnitude)
 		{
+			short shorts[3] = { 12, -5 };
+			double shortMag = CalculateArrayMagnitude(shorts, 2);
+			Assert::IsTrue(13 == shortMag);
+
+			unsigned short uShorts[3] = { 12, 5 };
+			double uShortMag = CalculateArrayMagnitude(uShorts, 2);
+			Assert::IsTrue(13 == uShortMag);
+
+			int ints[3] = { 12, 5 };
+			double intMag = CalculateArrayMagnitude(ints, 2);
+			Assert::IsTrue(13 == intMag);
+
+			unsigned int uInts[3] = { 12, 5 };
+			double uIntMag = CalculateArrayMagnitude(uInts, 2);
+			Assert::IsTrue(13 == uIntMag);
+
+			long longs[3] = { 12, 5 };
+			double longMag = CalculateArrayMagnitude(longs, 2);
+			Assert::IsTrue(13 == longMag);
+
+			unsigned long uLongs[3] = { 12, 5 };
+			double uLongMag = CalculateArrayMagnitude(uLongs, 2);
+			Assert::IsTrue(13 == uLongMag);
+
+			double doubles[3] = { 12, 5 };
+			double doubleMag = CalculateArrayMagnitude(doubles, 2);
+			Assert::IsTrue(13 == doubleMag);
+
+			float floats[3] = { 12, 5 };
+			double floatMag = CalculateArrayMagnitude(floats, 2);
+			Assert::IsTrue(13 == floatMag);
+
 			Vector2D* v2D = new Vector2D();
-			v2D->x = 4;
-			v2D->y = 0;
+			v2D->x = 12;
+			v2D->y = -5;
 			double magnitude2D = CalculateMagnitude(v2D);
-			Assert::IsTrue((double)4 == magnitude2D);
+			Assert::IsTrue(13 == magnitude2D);
 
 			Vector3D* v3D = new Vector3D();
-			v3D->x = 4;
-			v3D->y = 0;
+			v3D->x = 12;
+			v3D->y = -5;
 			v3D->z = 0;
 			double magnitude3D = CalculateMagnitude(v3D);
-			Assert::IsTrue((double)4 == magnitude3D);
+			Assert::IsTrue(13 == magnitude3D);
+		}
+
+		TEST_METHOD(TestNormalizeVector)
+		{
+			Vector2D* v2D = new Vector2D();
+			v2D->x = 12;
+			v2D->y = -5;
+			Vector2D newVector2 = NormalizeVector(*v2D);
+			NormalizeVector(v2D);
+			Assert::IsTrue(newVector2.x == v2D->x);
+			Assert::IsTrue(newVector2.x <= 1 && newVector2.x >= -1);
+			Assert::IsTrue(v2D->x <= 1 && v2D->x >= -1);
+			Assert::IsTrue(newVector2.y == v2D->y);
+			Assert::IsTrue(newVector2.y <= 1 && newVector2.y >= -1);
+			Assert::IsTrue(v2D->y <= 1 && v2D->y >= -1);
+
+			Vector3D* v3D = new Vector3D();
+			v3D->x = 12;
+			v3D->y = -5;
+			v3D->z = 0;
+			Vector3D newVector3 = NormalizeVector(*v3D);
+			NormalizeVector(v3D);
+			Assert::IsTrue(newVector3.x == v3D->x);
+			Assert::IsTrue(newVector3.x <= 1 && newVector3.x >= -1);
+			Assert::IsTrue(v3D->x <= 1 && v3D->x >= -1);
+			Assert::IsTrue(newVector3.y == v3D->y);
+			Assert::IsTrue(newVector3.y <= 1 && newVector3.y >= -1);
+			Assert::IsTrue(v3D->y <= 1 && v3D->y >= -1);
+			Assert::IsTrue(newVector3.z == v3D->z);
+			Assert::IsTrue(newVector3.z <= 1 && newVector3.z >= -1);
+			Assert::IsTrue(v3D->z <= 1 && v3D->z >= -1);
+		}
+
+		TEST_METHOD(TestCalculateDistance)
+		{
+			Vector2D v2D1 = Vector2D();
+			v2D1.x = 5;
+			v2D1.y = 0;
+			Vector2D v2D2 = Vector2D();
+			v2D2.x = -1;
+			v2D2.y = 8;
+			double result2D = CalculateDistance(&v2D1, &v2D2);
+			Assert::IsTrue(10 == result2D);
+
+			Vector3D v3D1 = Vector3D();
+			v3D1.x = 13;
+			v3D1.y = 10;
+			v3D1.z = 0;
+			Vector3D v3D2 = Vector3D();
+			v3D2.x = 1;
+			v3D2.y = 5;
+			v3D1.z = 0;
+			double result3D = CalculateDistance(&v3D1, &v3D2);
+			Assert::IsTrue(13 == result3D);
+		}
+
+		TEST_METHOD(TestCalculateDotProduct)
+		{
+			Vector2D v2D1 = Vector2D();
+			v2D1.x = 4;
+			v2D1.y = 6;
+			Vector2D v2D2 = Vector2D();
+			v2D2.x = -3;
+			v2D2.y = 7;
+			double result2D = CalculateDotProduct(&v2D1, &v2D2);
+			Assert::IsTrue(30 == result2D);
+
+			Vector3D v3D1 = Vector3D();
+			v3D1.x = 3;
+			v3D1.y = -2;
+			v3D1.z = 7;
+			Vector3D v3D2 = Vector3D();
+			v3D2.x = 0;
+			v3D2.y = 4;
+			v3D1.z = -1;
+			double result3D = CalculateDotProduct(&v3D1, &v3D2);
+			Assert::IsTrue(-8 == result3D);
 		}
 	};
 }

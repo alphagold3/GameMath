@@ -26,18 +26,30 @@ int main()
     float floatsum = SumArrayContents(floats, 3);
     std::cout << "Float Sum: " << floatsum << std::endl;
 
-    Vector2D* vector2 = new Vector2D();
-    vector2->x = 4;
-    vector2->y = 0;
-    double mag2 = CalculateMagnitude(vector2);
-    std::cout << "Magnitude for Vector 2D: " << mag2 << std::endl;
+    unsigned short uShorts1[3] = { 5, 0 };
+    unsigned short uShorts2[3] = { 1, 10 };
+    double uShortMag = CalculateArrayDistance(uShorts1, uShorts2, 2);
+    std::cout << "Positive Array Distance: " << uShortMag << std::endl;
 
-    Vector3D* vector3 = new Vector3D();
-    vector3->x = 4;
-    vector3->y = 0;
-    vector3->z = 0;
-    double mag3 = CalculateMagnitude(vector3);
-    std::cout << "Magnitude for Vector 3D: " << mag3 << std::endl;
+    Vector2D v2D1 = Vector2D();
+    v2D1.x = 4;
+    v2D1.y = 6;
+    Vector2D v2D2 = Vector2D();
+    v2D2.x = -3;
+    v2D2.y = 7;
+    double resultDP2 = CalculateDotProduct(&v2D1, &v2D2);
+    std::cout << "2D Dot Product: " << resultDP2 << std::endl;
+
+    Vector3D v3D1 = Vector3D();
+    v3D1.x = 3;
+    v3D1.y = -2;
+    v3D1.z = 7;
+    Vector3D v3D2 = Vector3D();
+    v3D2.x = 0;
+    v3D2.y = 4;
+    v3D1.z = -1;
+    double resultDP3 = CalculateDotProduct(&v3D1, &v3D2);
+    std::cout << "3D Dot Product: " << resultDP3 << std::endl;
 
     return 0;
 }
